@@ -1,0 +1,84 @@
+1.For the given json iterate over all for loops (for loop, for in, for of, forEach)
+
+const data = {
+  name: 'John Doe',
+  age: 30,
+  occupation: 'Software Engineer',
+  skills: ['JavaScript', 'Python', 'HTML', 'CSS'],
+};
+
+// for loop
+console.log('Using for loop:');
+const keys = Object.keys(data);
+for (let i = 0; i < keys.length; i++) {
+  const key = keys[i];
+  const value = data[key];
+  console.log(`${key}: ${value}`);
+}
+
+
+// for...in loop
+console.log('\nUsing for...in loop:');
+for (let key in data) {
+  const value = data[key];
+  console.log(`${key}: ${value}`);
+}
+
+// for...of loop (for arrays)
+console.log('\nUsing for...of loop:');
+const skills = data.skills;
+for (let skill of skills) {
+  console.log(skill);
+}
+
+// forEach loop (for arrays)
+console.log('\nUsing forEach loop:');
+skills.forEach(skill => {
+  console.log(skill);
+});
+
+
+2.Create your own resume data in json format.
+
+const resumeData = {
+  name: 'Riyaz',
+  age: 23,
+  profession: 'Web Developer',
+  skills: ['JavaScript', 'Python', 'HTML', 'CSS'],
+  contact: {
+    email: 'riyazcseriyaz.com',
+    mobile: '6369860040',
+    address: '5,T.K. Babu Sahib St,Vellore District,Tamil Nadu.',
+  },
+  
+  
+  education:[
+      {
+      instituation:'C.Abdul Hakeem College Of Engineering And Technology',
+      degree:'BE',
+      major:'CSE',
+      graduationYear:2022
+      }
+  ]
+
+}
+console.log(resumeData);
+
+3.Read about the difference between window,screen and document in javaScript
+
+window	
+Represents the browser window or tab. Provides methods and properties for managing the window, such as resizing, scrolling, opening new windows, accessing browser history, and more. Acts as the global object in the browser environment.
+screen	
+Represents the user's screen or display area. Provides information about screen properties like width, height, color depth, and pixel density. Useful for creating responsive layouts or performing calculations based on available screen space.
+document	
+Represents the currently loaded HTML document in the browser window. Provides methods and properties for accessing and manipulating document elements, modifying content or structure, adding event listeners, creating elements dynamically, and more.
+
+console.log(window.innerWidth);        // Outputs the width of the browser window
+console.log(window.innerHeight);       // Outputs the height of the browser window
+
+console.log(screen.width);             // Outputs the width of the user's screen
+console.log(screen.height);            // Outputs the height of the user's screen
+
+console.log(document.title);           // Outputs the title of the HTML document
+console.log(document.getElementById("myElement"));   // Retrieves an HTML element by its ID
+
