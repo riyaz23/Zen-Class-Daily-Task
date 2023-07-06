@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>XMLHttpRequest Example</title>
+  </head>
+  <body>
+    <script>
+    
+      var xhr = new XMLHttpRequest();
+
+      
+      var method = "GET";
+      var url = "https://restcountries.com/v3.1/all";
+
+    
+      xhr.open(method, url);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Request was successful
+          var countriesDetails = JSON.parse(xhr.responseText);
+
+          // Problem 1: Get all countries from Asia continent/region using filter function
+          var asiaCountries = countriesDetails.filter(
+            (country) => country.region === "Asia"
+          );
+          console.log("Countries in Asia:", asiaCountries);
+
+          // Problem 2: Get all countries with a population of less than 2 lakhs using filter function
+          var populationLessThan2Lakh = countriesDetails.filter(
+            (country) => country.population < 200000
+          );
+          console.log(
+            "Countries with population less than 2 lakhs:",
+            populationLessThan2Lakh
+          );
+
+          // Problem 3: Print the following details name, capital, flag using forEach function
+          countriesDetails.forEach((country) => {
+            console.log(
+              "Name:",
+              country.name.common,
+              "Capital:",
+              country.capital,
+              "Flag:",
+              country.flags.svg
+            );
+          });
+
+          // Problem 4: Print the total population of countries using reduce function
+          var totalPopulation = countriesDetails.reduce(
+            (total, country) => total + country.population,
+            0
+          );
+          console.log("Total population of countries:", totalPopulation);
+
+          // Problem 5: Print the country which uses US Dollars as currency
+          var usDollarCountries = countriesDetails.filter((country) => {
+            if (country.currencies && country.currencies.USD) {
+              return true;
+            }
+            return false;
+          });
+          console.log("Countries using US Dollars:", usDollarCountries);
+        } else {
+          // Request failed
+          console.log("Request failed", xhr.status);
+        }
+      };
+
+      // Send the request
+      xhr.send();
+    </script>
+  </body>
+</html>

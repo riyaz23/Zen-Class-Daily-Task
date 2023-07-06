@@ -1,0 +1,198 @@
+1.
+
+class Movie {
+  constructor(title, studio, rating = "PG") {
+    this.title = title;
+    this.studio = studio;
+    this.rating = rating;
+  }
+}
+
+function getPG(movies) {
+  return movies.filter(movie => movie.rating === "PG");
+}
+
+// Create an instance of the Movie class
+const casinoRoyale = new Movie("Casino Royale", "Eon Productions", "PG-13");
+
+// Test the getPG method
+const movies = [
+  new Movie("Movie 1", "Studio 1", "PG"),
+  new Movie("Movie 2", "Studio 2", "PG-13"),
+  new Movie("Movie 3", "Studio 3", "PG-13"),
+  new Movie("Movie 4", "Studio 4", "R"),
+];
+
+const pgMovies = getPG(movies);
+console.log(pgMovies);
+
+output:
+
+[ Movie { title: 'Movie 1', studio: 'Studio 1', rating: 'PG' } ]
+
+-------------------------------------------------------------------------------------------------------------------
+
+a.class Movie {
+  constructor(title, studio, rating) {
+    this.title = title;
+    this.studio = studio;
+    this.rating = rating;
+  }
+}
+
+b.class Movie {
+  constructor(title, studio, rating = "PG") {
+    this.title = title;
+    this.studio = studio;
+    this.rating = rating;
+  }
+}
+c.class Movie {
+  // ...
+
+  static getPG(movies) {
+    return movies.filter(movie => movie.rating === "PG");
+  }
+}
+d.const casinoRoyale = new Movie("Casino Royale", "Eon Productions", "PG-13");
+=================================================================================================================
+
+2.Typescript
+
+class Circle {
+  radius: number;
+  color: string;
+
+  constructor(radius: number = 1.0, color: string = "red") {
+    this.radius = radius;
+    this.color = color;
+  }
+
+  getRadius(): number {
+    return this.radius;
+  }
+
+  setRadius(radius: number): void {
+    this.radius = radius;
+  }
+
+  getColor(): string {
+    return this.color;
+  }
+
+  setColor(color: string): void {
+    this.color = color;
+  }
+
+  toString(): string {
+    return `circle[radius=${this.radius},color=${this.color}]`;
+  }
+
+  getArea(): number {
+    return Math.PI * this.radius ** 2;
+  }
+
+  getCircumference(): number {
+    return 2 * Math.PI * this.radius;
+  }
+}
+
+const myCircle = new Circle(); // creates a circle with default values (radius=1.0, color="red")
+console.log(myCircle.toString()); // Output: circle[radius=1,color=red]
+console.log(myCircle.getArea()); // Output: 3.141592653589793
+console.log(myCircle.getCircumference()); // Output: 6.283185307179586
+
+myCircle.radius = 2.5;
+myCircle.color = "blue";
+console.log(myCircle.toString()); // Output: circle[radius=2.5,color=blue]
+console.log(myCircle.getArea()); // Output: 19.634954084936208
+console.log(myCircle.getCircumference()); // Output: 15.707963267948966
+
+output:
+
+circle[radius=1,color=red]
+3.141592653589793
+6.283185307179586
+circle[radius=2.5,color=blue]
+19.634954084936208
+15.707963267948966
+
+--------------------------------------------------------------------------------------------------------------------
+3.Write a "person" class to hold all the details.
+
+class Person {
+  constructor(firstName, lastName, age, address) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.address = address;
+  }
+
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  getAge() {
+    return this.age;
+  }
+
+  setAge(age) {
+    this.age = age;
+  }
+
+  getAddress() {
+    return this.address;
+  }
+
+  setAddress(address) {
+    this.address = address;
+  }
+}
+
+const johnDoe = new Person("John", "Doe", 25, "123 Main Street");
+console.log(johnDoe.getFullName()); // Output: John Doe
+console.log(johnDoe.getAge()); // Output: 25
+console.log(johnDoe.getAddress()); // Output: 123 Main Street
+
+johnDoe.setAge(30);
+johnDoe.setAddress("456 Elm Street");
+console.log(johnDoe.getAge()); // Output: 30
+console.log(johnDoe.getAddress()); // Output: 456 Elm Street
+
+output:
+John Doe
+25
+123 Main Street
+30
+456 Elm Street
+
+-----------------------------------------------------------------------------------------------------
+
+4.Write a class to calculate the uber price
+
+class UberPriceCalculator {
+  constructor(baseFare, costPerMinute, costPerMile) {
+    this.baseFare = baseFare;
+    this.costPerMinute = costPerMinute;
+    this.costPerMile = costPerMile;
+  }
+
+  calculatePrice(distance, duration) {
+    const price = this.baseFare + (this.costPerMinute * duration) + (this.costPerMile * distance);
+    return price.toFixed(2); // Round to two decimal places
+  }
+}
+
+// Usage example:
+const calculator = new UberPriceCalculator(2.5, 0.3, 1.1);
+const distance = 5.2; // Distance in miles
+const duration = 12; // Duration in minutes
+
+const price = calculator.calculatePrice(distance, duration);
+console.log(`The estimated Uber price for a ${distance} mile trip taking ${duration} minutes is $${price}`);
+
+output:
+
+The estimated Uber price for a 5.2 mile trip taking 12 minutes is $11.82
+
+
